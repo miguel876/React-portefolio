@@ -1,0 +1,17 @@
+$no-margin: 0;
+$no-padding: 0;
+$full-height: 100vh;
+
+.banner{
+    margin: $no-margin;
+    padding: $no-padding;
+    height: $full-height;
+}
+
+.banner-img{
+    height: $full-height;
+    width: 100%;
+    object-fit: cover;  
+    margin: $no-margin;
+    padding: $no-padding;
+}

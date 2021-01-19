@@ -1,0 +1,19 @@
+body, html, #root {
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  transform: translate3d(0px, 0px, 0px);
+  transition: all 700ms ease;
+}
+
+@font-face {
+  font-family: "CustomFont";
+  src: url("./resources/fonts/DMSerifDisplay-Regular.ttf");
+}
+
+@font-face {
+  font-family: "TitleFont";
+  src: url("./resources/fonts/CinzelDecorative-Regular.ttf");
+}
