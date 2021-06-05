@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Header from './structure/Header.js';
+import Layout from './structure/Layout.js';
+import Footer from './structure/Footer.js';
+import SmoothScroll from './smoothScrolling.js';
 
 function App() {
+  new SmoothScroll(document,120,12);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Layout />
+      <Footer />
     </div>
   );
 }
+
 
 export default App;
