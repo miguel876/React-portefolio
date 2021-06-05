@@ -3,75 +3,92 @@ import Banner from '../structure/components/Banner.js';
 import Introduction from '../structure/components/Introduction.js';
 import Projects from '../structure/components/Projects.js';
 import '../styles/Layout.scss';
+import _ from "lodash";
 
 export default class Layout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAnimating: false,
-            scrolledY: 0,
+          top: 0,
+          animationEnd: false,
+          numSlides: 0,
         };
     }
     
     componentDidMount() {
-        //this.scrollEffect();
+      //window.addEventListener('wheel', _.throttle(this.scrollEffect, 1000));
     }
 
-    scrollEffect = () => {
-        let windowY = 0;
-        window.onscroll = function (e) {
-            windowY = window.scrollY;
-        };
+    // scrollEffect = (evt) => {
+    //   let getCurrentTop = this.state.top;
+    //   let topLayout = document.getElementsByClassName("Layout")[0], 
+    //       screenHeight = document.getElementsByClassName("introduction")[0].offsetHeight;
+  
+    //   if(evt){
+    //     if(evt.deltaY > 0 && topLayout.offsetHeight > ((topLayout.offsetTop * -1) + screenHeight)){
+    //       //Scroll Down
+    //       //Start Blur In Animation
+          
+    //       if(evt.path.includes(document.getElementsByClassName("introduction")[0])){
+    //         //console.log("Intro component")
+    //       }
+    //       this.transitionEffect().blurIn();
+    //       topLayout.addEventListener('animationend', () => {
 
-        this.setState({scrolledY: windowY});
+    //         this.setState({top: getCurrentTop - 100});
+            
+    //         //Start Blur Out Animation
+    //         this.transitionEffect().blurOut();
+    //         this.transitionEndingEffect();
 
-        document.body.style.transform = 'translate3d(0px,0px,0px)';
-        document.addEventListener('scroll', function(e){
-            document.body.scrollTop = 0;
-        });
 
-        document.addEventListener('wheel', this.wheelListener);
-    }
+            
+    //       });
+          
+    //     }else if(evt.deltaY < 0 && this.state.top < 0){
+    //       //Scroll Up
+    //       //Start Blur Out Animation
+    //       console.log(evt);
+    //       this.transitionEffect().blurIn();
+    //       topLayout.addEventListener('animationend', () => {
 
-    
+    //         this.setState({top: getCurrentTop + 100});
 
-    wheelListener = (e) => {
-        //console.log(window.scrollY);
+    //         //Start Blur Out Animation
+    //         this.transitionEffect().blurOut();
+    //         this.transitionEndingEffect();
 
-        //console.log(e);
-        
-        let pageHeight = window.innerHeight;
-        console.log(this.state.scrolledY);
-        
-        if(e.deltaY > 0) {
-          this.scrollPage(-(pageHeight + this.state.scrolledY));
-        } else {
-          this.scrollPage(+(pageHeight - this.state.scrolledY));
-        }
-    }
+    //       });
 
-    scrollPage = (scrollSize) => {
-        //console.log(scrollSize);
-        if(this.state.isAnimating){
-          return;
-        }
+    //     }
 
-        this.setState({isAnimating: true});
-        let yPos = this.getNewYPos(scrollSize);
-        document.body.style.transform = 'translate3d(0px,'+ yPos + ',0px)';  
-    }
+    //   }
+    // }
 
-    getNewYPos = (add) => {
-        let oldYPos = document.body.style.transform.split(',')[1];
-        oldYPos = parseInt(oldYPos.replace(/px/,''));
-        let newYPos = oldYPos + add;
-        if(newYPos > 0){
-          this.setState({isAnimating: false});
-        }
-        return Math.min(0, newYPos) + 'px';
-    }
+    // transitionEffect = () => {
+    //   const topLayout = document.getElementsByClassName("Layout")[0];
+
+    //   const animations = { 
+    //     blurIn: () => { topLayout.classList.add("blurIn"); },
+    //     blurOut: () => { topLayout.classList.add("blurOut"); },
+    //   };
+      
+    //   return animations;
+
+    // }
+
+    // transitionEndingEffect = () => {
+    //   const topLayout = document.getElementsByClassName("Layout")[0];
+
+    //   topLayout.addEventListener('animationend', () =>{
+    //     topLayout.classList.remove("blurIn");
+    //     topLayout.classList.remove("blurOut");
+    //   });
+    // }
 
   render() {
+    //let topRef = { top: this.state.top + "vh"};
+
     return (
       <div className="Layout">
         <Banner />
