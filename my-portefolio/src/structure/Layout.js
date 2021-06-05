@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Banner from '../structure/components/Banner.js';
 import Introduction from '../structure/components/Introduction.js';
 import Projects from '../structure/components/Projects.js';
+import Information from '../structure/components/Information';
 import '../styles/Layout.scss';
 import _ from "lodash";
 
@@ -94,6 +95,7 @@ export default class Layout extends Component {
         <Banner />
         <Introduction />
         <Projects />
+        <Information />
       </div>
     );
   }
